@@ -42,7 +42,7 @@ const List: IListConstructor = class List implements IList {
     public static filter = <T extends TList>(
         arr: T,
         cb: TFilterCb<T>
-    ): Array<keyof T> => {
+    ): Array<T[number]> => {
         const filtered: Array<keyof T> = [];
 
         List.each(arr, (el, i) => {

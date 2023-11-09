@@ -51,7 +51,7 @@ export type TMapCb<T extends TList, R> = (
  */
 export interface IListConstructor {
     each: <T extends TList>(arr: T, cb: TEachCb<T>, breakOn?: number) => void;
-    filter: <T extends TList>(arr: T, cb: TFilterCb<T>) => Array<keyof T>;
+    filter: <T extends TList>(arr: T, cb: TFilterCb<T>) => Array<T[number]>;
     map: <T extends TList, R>(arr: T, cb: TMapCb<T, R>) => Array<R>;
 }
 
