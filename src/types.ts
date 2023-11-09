@@ -50,8 +50,26 @@ export type TMapCb<T extends TList, R> = (
  * Интерфейс класса для управления массивом или DOM-коллекцией.
  */
 export interface IListConstructor {
-    each: <T extends TList>(arr: T, cb: TEachCb<T>, breakOn?: number) => void;
-    filter: <T extends TList>(arr: T, cb: TFilterCb<T>) => Array<T[number]>;
+    /**
+     * Оптимизированно перебирает массив.
+     * @param arr - Массив, NodeList или HTMLCollection.
+     * @param cb - Функция, которая вызывается для каждого элемента.
+     * @param breakOn - Индекс элемента, на котором функция завершит работу.
+     */
+    each: <T extends TList>(arr: T, cb: TEachCb<T>, breakOn?: number) => void
+    /**
+     * Оптимизированно фильтрует массив.
+     * @param arr - Массив, NodeList или HTMLCollection.
+     * @param cb - Функция, которая вызывается для каждого элемента.
+     * @returns Отфильтрованный массив.
+     */;
+    filter: <T extends TList>(arr: T, cb: TFilterCb<T>) => Array<T[number]>
+    /**
+     * Оптимизированно преобразует массив с помощью функции.
+     * @param arr - Массив, NodeList или HTMLCollection.
+     * @param cb - Функция преобразования для каждого элемента.
+     * @returns Результирующий массив.
+     */;
     map: <T extends TList, R>(arr: T, cb: TMapCb<T, R>) => Array<R>;
 }
 

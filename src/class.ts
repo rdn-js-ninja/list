@@ -11,12 +11,7 @@ import {
  * Класс для управления массивом или DOM-коллекцией.
  */
 const List: IListConstructor = class List implements IList {
-    /**
-     * Оптимизированно перебирает массив.
-     * @param arr - Массив, NodeList или HTMLCollection.
-     * @param cb - Функция, которая вызывается для каждого элемента.
-     * @param breakOn - Индекс элемента, на котором функция завершит работу.
-     */
+
     public static each = <T extends TList>(
         arr: T,
         cb: TEachCb<T>,
@@ -33,12 +28,7 @@ const List: IListConstructor = class List implements IList {
         }
     };
 
-    /**
-     * Оптимизированно фильтрует массив.
-     * @param arr - Массив, NodeList или HTMLCollection.
-     * @param cb - Функция, которая вызывается для каждого элемента.
-     * @returns Отфильтрованный массив.
-     */
+
     public static filter = <T extends TList>(
         arr: T,
         cb: TFilterCb<T>
@@ -54,12 +44,7 @@ const List: IListConstructor = class List implements IList {
         return filtered;
     };
 
-    /**
-     * Оптимизированно преобразует массив с помощью функции.
-     * @param arr - Массив, NodeList или HTMLCollection.
-     * @param cb - Функция преобразования для каждого элемента.
-     * @returns Результирующий массив.
-     */
+
     public static map = <T extends TList, R>(
         arr: T,
         cb: TMapCb<T, R>
