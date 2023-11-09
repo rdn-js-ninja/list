@@ -1,4 +1,4 @@
-import {
+import type {
     IList,
     IListConstructor,
     TEachCb,
@@ -8,10 +8,9 @@ import {
 } from "./types";
 
 /**
- * Класс для управления массивом или DOM-коллекцией.
+ * Class for managing an array or a DOM collection.
  */
 const List: IListConstructor = class List implements IList {
-
     public static each = <T extends TList>(
         arr: T,
         cb: TEachCb<T>,
@@ -28,7 +27,6 @@ const List: IListConstructor = class List implements IList {
         }
     };
 
-
     public static filter = <T extends TList>(
         arr: T,
         cb: TFilterCb<T>
@@ -43,7 +41,6 @@ const List: IListConstructor = class List implements IList {
 
         return filtered;
     };
-
 
     public static map = <T extends TList, R>(
         arr: T,

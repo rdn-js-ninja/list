@@ -1,15 +1,15 @@
 /**
- * Тип данных для списка.
- * @template T - Тип элементов списка.
+ * Data type for a list.
+ * @template T - Type of list items.
  */
 export type TList<T extends any = any> = NodeList | HTMLCollection | Array<T>;
 
 /**
- * Callback-функция для метода each списка.
- * @template T - Тип элементов списка.
- * @param item - Элемент списка.
- * @param index - Индекс элемента.
- * @param arr - Список.
+ * Callback function for the `each` method of a list.
+ * @template T - Type of list items.
+ * @param item - List item.
+ * @param index - Item index.
+ * @param arr - List.
  */
 export type TEachCb<T extends TList> = (
     item: T[number],
@@ -18,12 +18,12 @@ export type TEachCb<T extends TList> = (
 ) => void;
 
 /**
- * Callback-функция для метода filter списка.
- * @template T - Тип элементов списка.
- * @param item - Элемент списка.
- * @param index - Индекс элемента.
- * @param arr - Список.
- * @returns Результат фильтрации.
+ * Callback function for the `filter` method of a list.
+ * @template T - Type of list items.
+ * @param item - List item.
+ * @param index - Item index.
+ * @param arr - List.
+ * @returns Filtering result.
  */
 export type TFilterCb<T extends TList> = (
     item: T[number],
@@ -32,13 +32,13 @@ export type TFilterCb<T extends TList> = (
 ) => boolean;
 
 /**
- * Callback-функция для метода map списка.
- * @template T - Тип элементов исходного списка.
- * @template R - Тип элементов результирующего списка.
- * @param item - Элемент исходного списка.
- * @param index - Индекс элемента.
- * @param array - Исходный список.
- * @returns Элемент результирующего списка.
+ * Callback function for the `map` method of a list.
+ * @template T - Type of items in the source list.
+ * @template R - Type of items in the resulting list.
+ * @param item - Item from the source list.
+ * @param index - Item index.
+ * @param array - Source list.
+ * @returns Item for the resulting list.
  */
 export type TMapCb<T extends TList, R> = (
     item: T[number],
@@ -47,33 +47,33 @@ export type TMapCb<T extends TList, R> = (
 ) => R;
 
 /**
- * Интерфейс класса для управления массивом или DOM-коллекцией.
+ * Interface for the class constructor.
  */
 export interface IListConstructor {
     /**
-     * Оптимизированно перебирает массив.
-     * @param arr - Массив, NodeList или HTMLCollection.
-     * @param cb - Функция, которая вызывается для каждого элемента.
-     * @param breakOn - Индекс элемента, на котором функция завершит работу.
+     * Optimized method for iterating over a list.
+     * @param arr - Array, NodeList, or HTMLCollection.
+     * @param cb - Function that is called for each item.
+     * @param breakOn - Index at which the function will stop.
      */
-    each: <T extends TList>(arr: T, cb: TEachCb<T>, breakOn?: number) => void
+    each: <T extends TList>(arr: T, cb: TEachCb<T>, breakOn?: number) => void;
     /**
-     * Оптимизированно фильтрует массив.
-     * @param arr - Массив, NodeList или HTMLCollection.
-     * @param cb - Функция, которая вызывается для каждого элемента.
-     * @returns Отфильтрованный массив.
-     */;
-    filter: <T extends TList>(arr: T, cb: TFilterCb<T>) => Array<T[number]>
+     * Optimized method for filtering a list.
+     * @param arr - Array, NodeList, or HTMLCollection.
+     * @param cb - Function that is called for each item.
+     * @returns Filtered array.
+     */
+    filter: <T extends TList>(arr: T, cb: TFilterCb<T>) => Array<T[number]>;
     /**
-     * Оптимизированно преобразует массив с помощью функции.
-     * @param arr - Массив, NodeList или HTMLCollection.
-     * @param cb - Функция преобразования для каждого элемента.
-     * @returns Результирующий массив.
-     */;
+     * Optimized method for mapping a list.
+     * @param arr - Array, NodeList, or HTMLCollection.
+     * @param cb - Transformation function for each item.
+     * @returns Resulting array.
+     */
     map: <T extends TList, R>(arr: T, cb: TMapCb<T, R>) => Array<R>;
 }
 
 /**
- * Интерфейс экземпляра класса для управления массивом или DOM-коллекцией.
+ * Interface for the instance of the class.
  */
 export interface IList {}
